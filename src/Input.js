@@ -1,15 +1,17 @@
 import React from "react";
 
-const Input = ({ input, setInput, check }) => {
+const Input = ({ input, setInput, check, array }) => {
   return (
     <div>
       <select value={input} onChange={(e) => setInput(e.target.value)}>
         <option value=""></option>
-        <option value="United Kingdom">United Kingdom</option>
-        <option value="India">India</option>
-        <option value="Canada">Canada</option>
+        {array.map((res) => {
+          return <option value={res.countryName}>{res.countryName}</option>;
+        })}
       </select>
-      <button onClick={check}>Check Weather..</button>
+      <button onClick={check} style={{ border: "1px solid", margin: 10 }}>
+        Check Weather..
+      </button>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "./Card";
 import Input from "./Input";
 import "./App.css";
+
 const App = () => {
   const [options, setOptions] = useState("");
   const [states] = useState([
@@ -17,16 +18,24 @@ const App = () => {
       countryName: "Canada",
       weather: "20",
     },
+    {
+      countryName: "France",
+      weather: "30",
+    },
   ]);
   const [showData, setShowData] = useState([]);
   const findWeather = () => {
     const find = states.filter((res) => options.includes(res.countryName));
     setShowData(find);
   };
-
   return (
-    <div>
-      <Input input={options} setInput={setOptions} check={findWeather} />
+    <div className="app">
+      <Input
+        input={options}
+        setInput={setOptions}
+        check={findWeather}
+        array={states}
+      />
       {showData.map((res, index) => {
         return (
           <Card
